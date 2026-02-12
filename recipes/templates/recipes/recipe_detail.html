@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ object.name }}</title>
+</head>
+<body>
+
+<h1>{{ object.name }}</h1>
+
+<p><strong>Description:</strong> {{ object.description }}</p>
+<p><strong>Cooking time:</strong> {{ object.cooking_time }} minutes</p>
+<p><strong>Difficulty:</strong> {{ object.difficulty }}</p>
+
+<img src="{{ object.pic.url }}" width="300">
+
+<br><br>
+<a href="/" style="text-decoration: none;">⬅ Back to all recipes</a>
+
+
+</body>
+</html>

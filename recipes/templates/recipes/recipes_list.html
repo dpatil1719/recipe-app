@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipes</title>
+</head>
+<body>
+
+<h1>🍽 All Recipes</h1>
+
+<ul>
+    {% for recipe in object_list %}
+        <li>
+            <strong>
+                <a href="{% url 'recipes:detail' recipe.pk %}">
+                    {{ recipe.name }}
+                </a>
+            </strong><br>
+            Cooking time: {{ recipe.cooking_time }} minutes<br>
+            Difficulty: {{ recipe.difficulty }}<br>
+
+            <img src="{{ recipe.pic.url }}" width="200"><br><br>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
