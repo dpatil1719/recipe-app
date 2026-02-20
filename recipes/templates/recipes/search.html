@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Recipes</title>
+</head>
+<body>
+
+<p>
+  <a href="{% url 'recipes:list' %}">← Back to all recipes</a>
+  &nbsp; | &nbsp;
+  <a href="{% url 'logout' %}">Logout</a>
+</p>
+
+<h1>🔎 Search Recipes</h1>
+<hr>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Search</button>
+</form>
+
+<p>Type a recipe name and click Search. (Leave blank to show all.)</p>
+
+<hr>
+
+{% if results_table %}
+  <h2>Table View</h2>
+  {{ results_table|safe }}
+  <hr>
+{% endif %}
+
+{% if chart %}
+  <h2>Chart</h2>
+  <img src="data:image/png;base64,{{ chart|safe }}" alt="chart">
+  <hr>
+{% endif %}
+
+{% if results %}
+  <h2>Results</h2>
+  <ul>
+    {% for recipe in results %}
+      <li>
+        <a href="{% url 'recipes:detail' recipe.pk %}">{{ recipe.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% elif results is not None %}
+  <h3>No recipes found</h3>
+{% endif %}
+
+</body>
+</html>
