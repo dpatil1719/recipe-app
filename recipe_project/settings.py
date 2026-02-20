@@ -122,3 +122,20 @@ if not os.environ.get("DATABASE_URL"):
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
+
+# ============================
+# HEROKU SECURITY SETTINGS
+# ============================
+# Heroku terminates SSL at the router, so Django needs this to know the request is HTTPS
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Turn on these settings ONLY in production (Heroku dyno)
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # HSTS: start small to avoid accidental lockouts, then increase later
+    SECURE_HSTS_SECONDS = 60  # 1 minute (safe starter)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
