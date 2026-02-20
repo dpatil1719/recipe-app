@@ -4,7 +4,9 @@
     <title>{{ object.name }}</title>
 </head>
 <body>
-
+    <a href="{% url 'logout' %}">Logout</a>
+    <hr>
+    
 <h1>{{ object.name }}</h1>
 
 <p><strong>Description:</strong> {{ object.description }}</p>

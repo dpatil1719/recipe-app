@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+{% if error_message %}
+   {{ error_message }}
+{% endif %}
+
+<form method="POST">
+   {% csrf_token %}
+   {{ form }}
+   <button type="submit">Login</button>
+</form>
