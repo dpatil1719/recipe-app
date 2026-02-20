@@ -117,3 +117,8 @@ if not os.environ.get("DATABASE_URL"):
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
+
+# --- Auth redirects (Heroku fix) ---
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/login/"
